@@ -1,0 +1,54 @@
+---
+title: "Paradoks dnia urodzin"
+author: "Tomasz Stąpor"
+date: "4 September 2014"
+output:
+  html_document:
+    theme: readable
+    toc: yes
+---
+
+# Wstęp
+
+Jak wiele osób potrzeba, by prawdopodobieństwo natrafienia na dwie osoby urodzone tego samego dnia wynosiło 0,5 (czyli potocznie 50%)? Intuicyjnie zkładamy, że trzeba tych osób znacznie więcej niż 23.
+
+```{r}
+qbirthday(p=0.5, class=365, coincident = 2)
+```
+
+# Wykres funkcji.
+
+```{r, echo=FALSE}
+g <- Vectorize(pbirthday)
+plot(1:50, g(1:50),
+xlab = "Ilosc ludzi w pokoju", ylab = "Prawd.(trafienia dnia urodzin)", main = "Paradoks dnia urodzin")
+abline(h = 0.5)
+abline(v = 23, lty = 2)
+```
+
+# Pytania w kontekście astrologicznym
+
+Ile horoskopów przebadać, by mieć ponad 50% szansę na znalezienie 5 osób które mają Słońce i Księżyc w tym samym znaku?
+
+```{r}
+qbirthday(p=0.5, class=144, coincident = 5)
+```
+
+Szansa na spotk. w grup. 200 os. 4 lub więcej osób ze Słońcem w tym samym stopniu:
+
+```{r}
+pbirthday(n = 200, classes = 360, coincident = 4)
+```
+
+Ile horoskopów przebadać, by mieć ponad 50% szansę na znalezienie 3 Koziorożców:
+
+```{r}
+qbirthday(p = 0.5, classes = 12, coincident = 3)
+```
+
+Prawdopodobieństwo, że 3 kolejnych partnerów ma Słońce w Rybach?
+
+```
+{r}pbirthday(n = 3, classes = 12, coincident = 3)
+```
+
