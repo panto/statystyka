@@ -1,3 +1,4 @@
+library(IPSUR) 
 library(HH)
 
 # Eksperyment z astrologami wedyjskimi. Jest 40 horoskopów, z których 20 nalezy do dzieci upośledzonych
@@ -8,13 +9,15 @@ library(HH)
 p <- prop.test(x=17, n=40, p = 1/2, alternative = "greater", conf.level = 0.95, correct = FALSE)
 plot(p)
 
+
 # Najlepszy 24 dobre trafienia na 40 horoskopów.
 p <- prop.test(x=24, n=40, p = 1/2, alternative = "greater", conf.level = 0.95, correct = FALSE)
 plot(p)
 
-# Można powiedzieć, że gdyby strzelił 25 na 40, to byłby na granicy poziomu istotności 0,05.
-p <- prop.test(x=25, n=40, p = 1/2, alternative = "greater", conf.level = 0.95, correct = FALSE)
+# Można powiedzieć, że gdyby strzelił 26 na 40, to byłby na granicy poziomu istotności 0,05.
+p <- prop.test(x=26, n=40, p = 1/2, alternative = "greater", conf.level = 0.95, correct = FALSE)
 plot(p)
+title("26 trafień na 40",line=3)
 
 # Dokładne testy robi się z alfa = 0,01 procent, zo zmniejsza pole w jakie może wpaść wynik.
 
